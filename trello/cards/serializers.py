@@ -1,8 +1,13 @@
 from rest_framework import serializers
 from .models import Card
+from users.views import UserSerializers
+from users.models import User
 
 
 class CardSerializer(serializers.ModelSerializer):
+
+    user = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
+
     class Meta:
         model = Card
         fields = [
@@ -10,6 +15,6 @@ class CardSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "date_time",
-            "list",
+            "listsTrello",
             "user",
         ]

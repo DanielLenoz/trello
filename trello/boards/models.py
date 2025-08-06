@@ -9,4 +9,4 @@ class Board(models.Model):
     users = models.ManyToManyField(User, related_name="boards")
 
     def __str__(self):
-        return self.nombre
+        return self.name
